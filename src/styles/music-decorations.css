@@ -1,0 +1,367 @@
+/* Musical Decorative Elements - Pure CSS */
+
+/* Musical Staff Background Pattern */
+.musical-staff {
+  position: fixed;
+  width: 100%;
+  height: 200px;
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.musical-staff::before,
+.musical-staff::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #9B4DE0 20%, #A855F7 50%, #9B4DE0 80%, transparent);
+}
+
+.musical-staff::before { top: 20%; }
+.musical-staff::after { top: 40%; }
+
+.musical-staff-line {
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #7B3DB0 30%, transparent 70%);
+  opacity: 0.5;
+}
+
+.musical-staff-line:nth-child(1) { top: 30%; }
+.musical-staff-line:nth-child(2) { top: 50%; }
+.musical-staff-line:nth-child(3) { top: 60%; }
+.musical-staff-line:nth-child(4) { top: 70%; }
+.musical-staff-line:nth-child(5) { top: 80%; }
+
+/* Floating Musical Notes */
+.music-note {
+  position: absolute;
+  font-size: 24px;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 2;
+  filter: blur(0.5px);
+  animation: floatNote 20s infinite ease-in-out;
+  will-change: auto;
+}
+
+.music-note::before {
+  content: '♪';
+  color: #A855F7;
+  text-shadow: 0 0 10px rgba(168, 85, 247, 0.3);
+}
+
+.music-note.note-2::before { content: '♫'; color: #9B4DE0; }
+.music-note.note-3::before { content: '♬'; color: #B66FEA; }
+.music-note.note-4::before { content: '♩'; color: #7B3DB0; }
+.music-note.note-5::before { content: '♭'; color: #6366F1; }
+.music-note.note-6::before { content: '♯'; color: #EC4899; }
+
+@keyframes floatNote {
+  0% {
+    transform: translateY(100vh) translateX(0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.2;
+    transform: translateY(50vh) translateX(10px);
+  }
+  100% {
+    transform: translateY(-10vh) translateX(0);
+    opacity: 0;
+  }
+}
+
+/* Sound Wave Decorations */
+.sound-wave {
+  position: absolute;
+  width: 100px;
+  height: 50px;
+  opacity: 0.1;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.sound-wave::before,
+.sound-wave::after {
+  content: '';
+  position: absolute;
+  border: 2px solid #9B4DE0;
+  border-radius: 50%;
+  animation: soundPulse 3s infinite ease-out;
+}
+
+.sound-wave::before {
+  width: 30px;
+  height: 30px;
+  top: 10px;
+  left: 35px;
+}
+
+.sound-wave::after {
+  width: 50px;
+  height: 50px;
+  top: 0;
+  left: 25px;
+  animation-delay: 0.5s;
+}
+
+@keyframes soundPulse {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(3);
+    opacity: 0;
+  }
+}
+
+/* Vinyl Record Decoration */
+.vinyl-record {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: 
+    radial-gradient(circle at center, #1A0A1A 20%, transparent 20%),
+    radial-gradient(circle at center, transparent 30%, #2D1B35 30%, #2D1B35 32%, transparent 32%),
+    radial-gradient(circle at center, transparent 40%, #2D1B35 40%, #2D1B35 42%, transparent 42%),
+    radial-gradient(circle at center, transparent 50%, #2D1B35 50%, #2D1B35 52%, transparent 52%),
+    radial-gradient(circle at center, transparent 60%, #2D1B35 60%, #2D1B35 62%, transparent 62%),
+    linear-gradient(45deg, #0A0A0A 0%, #1A0A1A 50%, #0A0A0A 100%);
+  box-shadow: 
+    0 0 20px rgba(155, 77, 224, 0.2),
+    inset 0 0 20px rgba(0, 0, 0, 0.5);
+  opacity: 0.1;
+  pointer-events: none;
+  animation: spinVinyl 30s linear infinite;
+  will-change: auto;
+  z-index: 1;
+}
+
+.vinyl-record::before {
+  content: '';
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background: radial-gradient(circle, #9B4DE0 30%, #7B3DB0 70%);
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 10px rgba(155, 77, 224, 0.5);
+}
+
+@keyframes spinVinyl {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Piano Keys Decoration */
+.piano-keys {
+  position: absolute;
+  display: flex;
+  gap: 2px;
+  opacity: 0.05;
+  pointer-events: none;
+  z-index: 1;
+  transform: perspective(300px) rotateX(45deg);
+}
+
+.piano-key {
+  width: 20px;
+  height: 80px;
+  background: linear-gradient(180deg, #FFFFFF 0%, #E5E7EB 100%);
+  border: 1px solid rgba(155, 77, 224, 0.1);
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.piano-key.black {
+  width: 15px;
+  height: 50px;
+  background: linear-gradient(180deg, #1A0A1A 0%, #0A0A0A 100%);
+  margin-left: -8px;
+  margin-right: -8px;
+  z-index: 2;
+}
+
+.piano-keys:hover .piano-key {
+  animation: pianoPress 2s infinite ease-in-out;
+}
+
+@keyframes pianoPress {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(3px); }
+}
+
+/* Guitar Strings */
+.guitar-strings {
+  position: absolute;
+  width: 300px;
+  height: 100px;
+  opacity: 0.05;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.guitar-string {
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #9B4DE0 10%, #A855F7 50%, #9B4DE0 90%, transparent);
+  transform-origin: center;
+}
+
+.guitar-string:nth-child(1) { top: 20%; animation: vibrateString 5s infinite ease-in-out; }
+.guitar-string:nth-child(2) { top: 35%; animation: vibrateString 5.5s infinite ease-in-out 0.5s; }
+.guitar-string:nth-child(3) { top: 50%; animation: vibrateString 6s infinite ease-in-out 1s; }
+.guitar-string:nth-child(4) { top: 65%; animation: vibrateString 5.2s infinite ease-in-out 1.5s; }
+.guitar-string:nth-child(5) { top: 80%; animation: vibrateString 5.8s infinite ease-in-out 2s; }
+
+@keyframes vibrateString {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-0.5px); }
+}
+
+/* Treble Clef Symbol */
+.treble-clef {
+  position: absolute;
+  width: 60px;
+  height: 120px;
+  opacity: 0.08;
+  pointer-events: none;
+  z-index: 1;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 200'%3E%3Cpath d='M50 20 Q 30 40, 35 60 T 50 100 Q 65 120, 60 140 T 50 180' stroke='%239B4DE0' stroke-width='3' fill='none'/%3E%3C/svg%3E");
+  background-size: contain;
+  background-repeat: no-repeat;
+  filter: drop-shadow(0 0 5px rgba(155, 77, 224, 0.3));
+  animation: floatClef 12s infinite ease-in-out;
+  will-change: auto;
+}
+
+@keyframes floatClef {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Equalizer Bars */
+.equalizer {
+  position: absolute;
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 40px;
+  opacity: 0.1;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.eq-bar {
+  width: 4px;
+  background: linear-gradient(180deg, #A855F7 0%, #9B4DE0 50%, #7B3DB0 100%);
+  border-radius: 2px;
+  animation: equalize 2s infinite ease-in-out;
+  will-change: auto;
+}
+
+.eq-bar:nth-child(1) { animation-delay: 0s; height: 60%; }
+.eq-bar:nth-child(2) { animation-delay: 0.1s; height: 80%; }
+.eq-bar:nth-child(3) { animation-delay: 0.2s; height: 100%; }
+.eq-bar:nth-child(4) { animation-delay: 0.3s; height: 70%; }
+.eq-bar:nth-child(5) { animation-delay: 0.4s; height: 90%; }
+
+@keyframes equalize {
+  0%, 100% { transform: scaleY(0.7); }
+  50% { transform: scaleY(1); }
+}
+
+/* Microphone Icon */
+.microphone {
+  position: absolute;
+  width: 30px;
+  height: 50px;
+  opacity: 0.08;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.microphone::before {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 30px;
+  background: linear-gradient(180deg, #A855F7 0%, #9B4DE0 100%);
+  border-radius: 10px 10px 20px 20px;
+  top: 0;
+  left: 5px;
+  box-shadow: 0 0 10px rgba(168, 85, 247, 0.3);
+}
+
+.microphone::after {
+  content: '';
+  position: absolute;
+  width: 30px;
+  height: 15px;
+  border: 2px solid #9B4DE0;
+  border-top: none;
+  border-radius: 0 0 15px 15px;
+  bottom: 10px;
+  left: 0;
+}
+
+/* Headphones Decoration */
+.headphones {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  opacity: 0.08;
+  pointer-events: none;
+  z-index: 1;
+  animation: bobHeadphones 6s infinite ease-in-out;
+  will-change: auto;
+}
+
+.headphones::before {
+  content: '';
+  position: absolute;
+  width: 50px;
+  height: 30px;
+  border: 3px solid #9B4DE0;
+  border-bottom: none;
+  border-radius: 25px 25px 0 0;
+  top: 5px;
+  left: 5px;
+}
+
+.headphones::after {
+  content: '';
+  position: absolute;
+  width: 15px;
+  height: 20px;
+  background: linear-gradient(180deg, #A855F7 0%, #9B4DE0 100%);
+  border-radius: 5px;
+  bottom: 10px;
+  box-shadow: 0 0 5px rgba(155, 77, 224, 0.3);
+}
+
+.headphones-left::after { left: 0; }
+.headphones-right::after { right: 0; }
+
+@keyframes bobHeadphones {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+/* Apply decorations to sections */
+.music-decorations-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}

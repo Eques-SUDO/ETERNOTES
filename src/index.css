@@ -1,0 +1,740 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-0;
+  }
+  
+  html {
+    /* Enhanced mobile scrolling */
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    overflow-scrolling: touch;
+  }
+  
+  body {
+    @apply bg-dark-bg text-text-primary overflow-x-hidden font-sans;
+    background: 
+      radial-gradient(circle at 25% 25%, rgba(0, 212, 255, 0.06) 0%, transparent 50%),
+      radial-gradient(circle at 75% 75%, rgba(255, 69, 216, 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 50% 50%, rgba(153, 69, 255, 0.04) 0%, transparent 60%),
+      radial-gradient(ellipse at center, rgba(0, 212, 255, 0.02) 0%, #0A0A0A 70%);
+    background-size: 800px 800px, 600px 600px, 900px 900px, 100% 100%;
+    background-attachment: fixed;
+    line-height: 1.6;
+    
+    /* Mobile scrolling optimizations */
+    -webkit-overflow-scrolling: touch;
+    overflow-scrolling: touch;
+    overscroll-behavior-y: contain;
+    touch-action: pan-y;
+  }
+  
+  h1 {
+    @apply text-4xl md:text-5xl xl:text-6xl font-bold font-heading text-text-primary leading-tight;
+  }
+  
+  h2 {
+    @apply text-3xl md:text-4xl xl:text-5xl font-bold font-heading text-text-primary leading-tight;
+  }
+  
+  h3 {
+    @apply text-2xl md:text-3xl xl:text-4xl font-semibold font-heading text-text-primary leading-snug;
+  }
+  
+  h4 {
+    @apply text-xl md:text-2xl xl:text-3xl font-semibold font-heading text-text-secondary leading-snug;
+  }
+  
+  h5 {
+    @apply text-lg md:text-xl font-medium font-heading text-text-secondary;
+  }
+  
+  h6 {
+    @apply text-base md:text-lg font-medium font-heading text-text-tertiary;
+  }
+  
+  p {
+    @apply text-base md:text-lg text-text-secondary leading-relaxed;
+  }
+  
+  a {
+    @apply text-primary hover:text-primary/80 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50;
+  }
+  
+  button {
+    @apply cursor-pointer transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50;
+  }
+  
+  /* Modern Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-dark-surface;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #8B5DFF, #6366F1);
+    border-radius: 3px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #A855F7, #8B5DFF);
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* GPU Optimizations */
+  .gpu-accelerated {
+    transform: translateZ(0);
+    will-change: transform;
+    backface-visibility: hidden;
+  }
+  
+  /* Simple fade animation */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .animate-fadeIn {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply relative text-white px-6 md:px-8 py-3 md:py-4 rounded-xl font-semibold overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-glow-lg active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50;
+    background: linear-gradient(135deg, #00D4FF 0%, #9945FF 50%, #FF45D8 100%) !important;
+    background-size: 200% 200% !important;
+    min-height: 48px;
+    box-shadow: 
+      0 4px 25px rgba(0, 212, 255, 0.6) !important,
+      0 2px 15px rgba(153, 69, 255, 0.5) !important,
+      0 1px 8px rgba(255, 69, 216, 0.4) !important;
+    animation: gradient-shift 3s ease infinite;
+    border: 2px solid rgba(255, 255, 255, 0.2) !important;
+  }
+  
+  .btn-primary:hover {
+    box-shadow: 
+      0 8px 35px rgba(0, 212, 255, 0.5),
+      0 4px 20px rgba(153, 69, 255, 0.4),
+      0 2px 12px rgba(255, 69, 216, 0.3);
+    transform: translateY(-3px) scale(1.02);
+    background-size: 250% 250%;
+  }
+  
+  .btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+  }
+  
+  .btn-primary:hover::before {
+    left: 100%;
+  }
+  
+  .btn-secondary {
+    @apply relative border-2 border-dark-border backdrop-blur-xl bg-dark-surface text-text-primary px-6 md:px-8 py-3 md:py-4 rounded-xl font-semibold overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-medium active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50;
+    min-height: 48px;
+    border-color: #333333;
+  }
+  
+  .btn-outline {
+    @apply relative border-2 backdrop-blur-xl bg-transparent text-white px-6 md:px-8 py-3 md:py-4 rounded-xl font-semibold overflow-hidden transition-all duration-300 hover:-translate-y-1 active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50;
+    border: 2px solid transparent;
+    background-image: 
+      linear-gradient(135deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.2)),
+      linear-gradient(135deg, #00D4FF, #9945FF, #FF45D8);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    min-height: 48px;
+    box-shadow: 
+      0 4px 20px rgba(0, 212, 255, 0.25),
+      0 2px 10px rgba(153, 69, 255, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+  
+  .btn-outline:hover {
+    background-image: 
+      linear-gradient(135deg, rgba(0, 212, 255, 0.15), rgba(153, 69, 255, 0.15), rgba(255, 69, 216, 0.15)),
+      linear-gradient(135deg, #00D4FF, #9945FF, #FF45D8);
+    box-shadow: 
+      0 8px 30px rgba(0, 212, 255, 0.35),
+      0 4px 15px rgba(153, 69, 255, 0.3),
+      0 2px 8px rgba(255, 69, 216, 0.25),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    transform: translateY(-3px) scale(1.02);
+  }
+  
+  .btn-outline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.5s;
+  }
+  
+  .btn-outline:hover::before {
+    left: 100%;
+  }
+  
+  .glass {
+    @apply backdrop-blur-xl bg-primary/5 border border-dark-border;
+    box-shadow: 0 8px 32px rgba(139, 93, 255, 0.08);
+  }
+  
+  .modern-card {
+    @apply backdrop-blur-xl border border-dark-border rounded-2xl p-6 md:p-8;
+    background: linear-gradient(135deg, rgba(17, 24, 39, 0.8) 0%, rgba(31, 41, 55, 0.8) 100%);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  }
+  
+  .elevated-card {
+    @apply backdrop-blur-xl border border-dark-elevated rounded-2xl p-6 md:p-8;
+    background: linear-gradient(135deg, rgba(31, 41, 55, 0.9) 0%, rgba(55, 65, 81, 0.9) 100%);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  }
+  
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background: linear-gradient(135deg, #00D4FF 0%, #9945FF 50%, #FF45D8 100%);
+    background-size: 200% 200%;
+  }
+  
+  .text-brand {
+    @apply bg-clip-text text-transparent bg-brand-gradient;
+  }
+  
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  /* Mobile-first optimizations */
+  @media (max-width: 640px) {
+    .btn-primary, .btn-secondary, .btn-outline {
+      @apply px-4 py-3 text-sm;
+      min-height: 44px; /* Better touch target */
+    }
+    
+    .modern-card, .elevated-card {
+      @apply p-4 rounded-xl;
+    }
+    
+    .glass {
+      @apply backdrop-blur-lg; /* Reduce blur on mobile for performance */
+    }
+    
+    /* Reduce animation complexity on mobile */
+    .animate-bounce {
+      animation-duration: 2s;
+    }
+    
+    /* Better mobile text scaling */
+    h1 { @apply text-3xl leading-tight; }
+    h2 { @apply text-2xl leading-tight; }
+    h3 { @apply text-xl leading-snug; }
+  }
+  
+  /* Touch optimization */
+  @media (hover: none) and (pointer: coarse) {
+    .hover\:scale-105:hover {
+      transform: none;
+    }
+    
+    .hover\:-translate-y-1:hover {
+      transform: none;
+    }
+    
+    /* Larger touch targets on mobile */
+    button, a {
+      min-height: 44px;
+      min-width: 44px;
+    }
+  }
+  
+  /* Responsive optimizations */
+  @media (max-width: 640px) {
+    .glass {
+      backdrop-filter: blur(8px);
+      @apply bg-dark-surface/90;
+    }
+    
+    .modern-card {
+      backdrop-filter: blur(8px);
+      @apply bg-dark-card/95 p-4;
+    }
+    
+    .elevated-card {
+      backdrop-filter: blur(8px);
+      @apply bg-dark-elevated/95 p-4;
+    }
+    
+    /* Improved touch targets */
+    button, 
+    a,
+    [role="button"] {
+      min-height: 44px;
+      min-width: 44px;
+    }
+  }
+  
+  /* Mobile optimizations - Enhanced for smooth scrolling */
+  @media (max-width: 767px) {
+    /* Optimize background attachment for mobile */
+    body {
+      background-attachment: scroll !important; /* Better mobile performance */
+    }
+    
+    /* Mobile-optimized cards */
+    .modern-card {
+      backdrop-filter: blur(8px);
+      @apply bg-dark-card/95 p-4;
+      will-change: transform;
+      transform: translateZ(0);
+    }
+    
+    .elevated-card {
+      backdrop-filter: blur(8px);
+      @apply bg-dark-elevated/95 p-4;
+      will-change: transform;
+      transform: translateZ(0);
+    }
+    
+    /* Optimized animations for mobile */
+    .text-gradient-aurora,
+    .text-gradient-cosmic {
+      animation-duration: 4s; /* Slightly slower for mobile performance */
+    }
+    
+    /* Reduce motion intensity on smaller screens */
+    .animate-fadeIn {
+      animation-duration: 0.6s; /* Faster fade-in for mobile */
+    }
+    
+    /* Enhanced touch targets */
+    button, 
+    a,
+    [role="button"] {
+      min-height: 44px;
+      min-width: 44px;
+      touch-action: manipulation;
+    }
+    
+    /* Optimize scrolling containers */
+    .container-custom {
+      -webkit-overflow-scrolling: touch;
+      overflow-scrolling: touch;
+    }
+    
+    /* Reduce gradient complexity on mobile for better performance */
+    .text-gradient-aurora {
+      background-size: 150% 100%; /* Smaller gradient size */
+    }
+    
+    .text-gradient-cosmic {
+      background-size: 200% 200%; /* Reduced from 300% */
+    }
+    
+    /* Optimize heavy animations on mobile */
+    .animate-pulse {
+      animation-duration: 2s; /* Slower pulse for better performance */
+    }
+    
+    /* Reduce backdrop blur on mobile for better scrolling */
+    .backdrop-blur-xl {
+      backdrop-filter: blur(12px); /* Reduced from default */
+    }
+    
+    /* Optimize hero section animations for mobile */
+    .animate-bounce {
+      animation-duration: 2s; /* Slower bounce */
+      animation-timing-function: ease-in-out;
+    }
+    
+    /* Mobile-specific gradient optimizations */
+    .text-gradient-neon {
+      filter: drop-shadow(0 0 15px rgba(139, 93, 255, 0.4)); /* Reduced glow */
+    }
+    
+    .text-glow-purple,
+    .text-glow-cyan {
+      text-shadow: 0 0 8px currentColor; /* Simplified glow */
+    }
+  }
+  
+  /* Tablet optimizations */
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .modern-card {
+      @apply p-6;
+    }
+    
+    .elevated-card {
+      @apply p-6;
+    }
+  }
+  
+  /* Animation utilities */
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+  
+  .animation-delay-400 {
+    animation-delay: 400ms;
+  }
+  
+  .animation-delay-600 {
+    animation-delay: 600ms;
+  }
+  
+  /* Creative gradient text effects */
+  .text-gradient-purple-pink {
+    @apply text-transparent bg-clip-text;
+    background-image: linear-gradient(135deg, #9945FF 0%, #FF45D8 50%, #FF00AA 100%);
+  }
+  
+  .text-gradient-blue-cyan {
+    @apply text-transparent bg-clip-text;
+    background-image: linear-gradient(135deg, #00D4FF 0%, #00FFFF 50%, #0099CC 100%);
+  }
+  
+  .text-gradient-pink-orange {
+    @apply text-transparent bg-clip-text;
+    background-image: linear-gradient(135deg, #F472B6 0%, #F59E0B 50%, #EF4444 100%);
+  }
+  
+  .text-gradient-emerald-cyan {
+    @apply text-transparent bg-clip-text;
+    background-image: linear-gradient(135deg, #10B981 0%, #22D3EE 50%, #3B82F6 100%);
+  }
+  
+  .text-gradient-aurora {
+    @apply text-transparent bg-clip-text;
+    background-image: linear-gradient(90deg, #00D4FF 0%, #FF45D8 20%, #00FFFF 40%, #9945FF 60%, #FF00AA 80%, #00D4FF 100%);
+    background-size: 200% 100%;
+    animation: gradient-shift 3s ease infinite;
+  }
+  
+  .text-gradient-cosmic {
+    @apply text-transparent bg-clip-text;
+    background-image: linear-gradient(45deg, #9945FF 0%, #00D4FF 25%, #00FFFF 50%, #FF45D8 75%, #FF00AA 100%);
+    background-size: 300% 300%;
+    animation: gradient-shift 5s ease infinite;
+  }
+  
+  .text-gradient-neon {
+    @apply text-transparent bg-clip-text;
+    background-image: linear-gradient(135deg, #00FFFF 0%, #9945FF 33%, #FF45D8 66%, #00D4FF 100%);
+    filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.5));
+  }
+  
+  .text-glow-purple {
+    color: #A855F7;
+    text-shadow: 0 0 10px rgba(168, 85, 247, 0.8), 0 0 20px rgba(168, 85, 247, 0.6), 0 0 30px rgba(168, 85, 247, 0.4);
+  }
+  
+  .text-glow-cyan {
+    color: #22D3EE;
+    text-shadow: 0 0 10px rgba(34, 211, 238, 0.8), 0 0 20px rgba(34, 211, 238, 0.6), 0 0 30px rgba(34, 211, 238, 0.4);
+  }
+  
+  @keyframes gradient-shift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
+  /* Viewport-based animation controls for mobile optimization */
+  .mobile-optimized-animation {
+    /* Pause animations when not visible to save performance */
+    animation-play-state: running;
+  }
+  
+  @media (max-width: 767px) {
+    /* Reduce animation complexity when device is in power-saving mode */
+    @media (prefers-reduced-motion: reduce) {
+      .text-gradient-aurora,
+      .text-gradient-cosmic {
+        animation: none;
+        background: linear-gradient(135deg, #8B5DFF 0%, #A855F7 100%);
+      }
+    }
+    
+    /* Optimize animations based on device capabilities */
+    @media (hover: none) and (pointer: coarse) {
+      /* Touch devices - reduce hover effects complexity */
+      .group:hover .text-gradient-aurora,
+      .group:hover .text-gradient-cosmic {
+        animation-duration: 2s; /* Faster for touch interactions */
+      }
+    }
+  }
+  
+  /* Artist name special effects */
+  .artist-name-glow {
+    position: relative;
+  }
+  
+  .artist-name-glow::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+    border-radius: 8px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .group:hover .artist-name-glow::before {
+    opacity: 1;
+  }
+  
+  /* Large screen optimizations */
+  @media (min-width: 1280px) {
+    .modern-card {
+      @apply p-10;
+    }
+    
+    .elevated-card {
+      @apply p-10;
+    }
+  }
+  
+  /* Ultra-wide screen optimizations */
+  @media (min-width: 1536px) {
+    .modern-card {
+      @apply p-12;
+    }
+    
+    .elevated-card {
+      @apply p-12;
+    }
+  }
+}
+
+@layer utilities {
+  /* Modern shadow system */
+  .shadow-glow {
+    box-shadow: 0 0 20px rgba(139, 93, 255, 0.3);
+  }
+  
+  .shadow-glow-lg {
+    box-shadow: 0 0 40px rgba(139, 93, 255, 0.4);
+  }
+  
+  .shadow-neon-lg {
+    box-shadow: 0 10px 40px rgba(139, 93, 255, 0.4);
+  }
+  
+  /* Text effects */
+  .text-glow {
+    text-shadow: 0 0 20px rgba(139, 93, 255, 0.5);
+  }
+  
+  .text-shadow {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Background utilities */
+  .bg-mesh-gradient {
+    background-image: radial-gradient(at 40% 20%, rgba(139, 93, 255, 0.15) 0px, transparent 50%),
+                      radial-gradient(at 80% 0%, rgba(168, 85, 247, 0.12) 0px, transparent 50%),
+                      radial-gradient(at 0% 50%, rgba(99, 102, 241, 0.1) 0px, transparent 50%);
+  }
+  
+  .bg-gradient-radial {
+    background: radial-gradient(circle at center, var(--tw-gradient-stops));
+  }
+  
+  /* Interactive states */
+  .interactive {
+    @apply cursor-pointer transition-all duration-300 hover:scale-105 active:scale-95;
+  }
+  
+  .interactive-subtle {
+    @apply cursor-pointer transition-all duration-200 hover:bg-primary/5 active:bg-primary/10;
+  }
+  
+  /* Layout utilities */
+  .content-grid {
+    display: grid;
+    grid-template-columns: 1fr min(65ch, 100%) 1fr;
+  }
+  
+  .content-grid > * {
+    grid-column: 2;
+  }
+  
+  .full-width {
+    grid-column: 1 / -1;
+  }
+  
+  /* Performance utilities */
+  .contain-layout {
+    contain: layout;
+  }
+  
+  .contain-paint {
+    contain: paint;
+  }
+  
+  .contain-strict {
+    contain: strict;
+  }
+  
+  /* Accessibility utilities */
+  .focus-visible {
+    @apply outline-none ring-2 ring-primary ring-opacity-50 ring-offset-2 ring-offset-dark-bg;
+  }
+  
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+  
+  /* High contrast mode support */
+  @media (prefers-contrast: high) {
+    .text-gradient,
+    .text-brand {
+      @apply text-text-primary bg-none;
+    }
+    
+    .glass,
+    .modern-card,
+    .elevated-card {
+      @apply border-2 border-text-primary/20;
+    }
+  }
+  
+  /* Reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+    
+    /* Disable ETERNOTES infinity animations for accessibility */
+    .infinity-float {
+      animation: none !important;
+      opacity: 0.1 !important;
+      transform: none !important;
+    }
+  }
+  
+  /* Dark mode improvements */
+  @media (prefers-color-scheme: dark) {
+    :root {
+      color-scheme: dark;
+    }
+  }
+
+  /* ===== MINIMAL ETERNOTES ANIMATIONS ===== */
+  
+  /* Infinity Symbol Animation - Performance Optimized */
+  .infinity-float {
+    animation: infinityFloat 12s ease-in-out infinite;
+    will-change: transform, opacity;
+  }
+  
+  /* Decorative Symbol Containers */
+  .symbol-decoration {
+    position: absolute;
+    pointer-events: none;
+    user-select: none;
+    font-size: 2rem;
+    color: transparent;
+    background: linear-gradient(135deg, #00D4FF 0%, #9945FF 50%, #FF45D8 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    z-index: 1;
+  }
+  
+  .symbol-decoration.small {
+    font-size: 1.5rem;
+  }
+  
+  .symbol-decoration.large {
+    font-size: 3rem;
+  }
+  
+  /* Symbol positioning classes */
+  .symbol-top-left {
+    top: 10%;
+    left: 5%;
+  }
+  
+  .symbol-top-right {
+    top: 15%;
+    right: 8%;
+  }
+  
+  .symbol-bottom-left {
+    bottom: 20%;
+    left: 10%;
+  }
+  
+  .symbol-bottom-right {
+    bottom: 10%;
+    right: 5%;
+  }
+  
+  .symbol-center {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  /* Responsive symbol sizes */
+  @media (max-width: 768px) {
+    .symbol-decoration {
+      font-size: 1.5rem;
+    }
+    
+    .symbol-decoration.small {
+      font-size: 1rem;
+    }
+    
+    .symbol-decoration.large {
+      font-size: 2rem;
+    }
+  }
+}

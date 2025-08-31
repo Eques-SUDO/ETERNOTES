@@ -1,0 +1,50 @@
+[build]
+  # Build command
+  command = "npm ci --legacy-peer-deps && npm run build"
+  
+  # Directory to publish (your Vite config builds to 'build')
+  publish = "build"
+  
+  # Base directory for build command
+  base = "."
+
+[build.environment]
+  # Node.js version (required for Vite 7.x)
+  NODE_VERSION = "20"
+  
+  # Disable CI warnings that can break builds
+  CI = "false"
+
+# Redirect all routes to index.html for SPA routing
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Headers for better performance and security
+[[headers]]
+  for = "/*"
+  [headers.values]
+    # Security headers
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    
+    # Performance headers
+    Cache-Control = "public, max-age=31536000"
+
+[[headers]]
+  for = "*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

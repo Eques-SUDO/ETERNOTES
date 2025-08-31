@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-dark-bg text-accent overflow-x-hidden;
+    background: 
+      radial-gradient(circle at 25% 25%, rgba(180, 92, 240, 0.03) 0%, transparent 50%),
+      radial-gradient(circle at 75% 75%, rgba(232, 145, 255, 0.02) 0%, transparent 50%),
+      radial-gradient(ellipse at center, rgba(180, 92, 240, 0.05) 0%, #0A0A0A 70%);
+    background-size: 600px 600px, 400px 400px, 100% 100%;
+    background-attachment: fixed;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold;
+  }
+  
+  a {
+    @apply text-primary hover:text-nova-neon transition-colors duration-300;
+  }
+  
+  button {
+    @apply cursor-pointer transition-all duration-300;
+  }
+  
+  /* Optimized Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-dark-secondary;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #B45CF0, #8B2FD6);
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #E891FF, #B45CF0);
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* GPU Optimizations */
+  .gpu-accelerated {
+    transform: translateZ(0);
+    will-change: transform;
+    backface-visibility: hidden;
+  }
+  
+  /* Simple fade animation */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .animate-fadeIn {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply relative bg-nova-gradient text-accent px-8 py-4 rounded-2xl font-semibold overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-neon-lg active:translate-y-0;
+    background-size: 200% 200%;
+  }
+  
+  .btn-outline {
+    @apply relative border-2 border-primary/60 backdrop-blur-xl bg-primary/15 text-accent px-8 py-4 rounded-2xl font-semibold overflow-hidden transition-all duration-300 hover:border-nova-neon hover:-translate-y-1 hover:shadow-neon-lg active:translate-y-0;
+  }
+  
+  .glass {
+    @apply backdrop-blur-xl bg-primary/5 border border-primary/20;
+    box-shadow: 0 8px 32px rgba(180, 92, 240, 0.1);
+  }
+  
+  .modern-card {
+    @apply bg-gradient-to-br from-primary/10 to-nova-deepPurple/5 backdrop-blur-xl border border-primary/20 rounded-3xl;
+    box-shadow: 0 16px 48px rgba(180, 92, 240, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+  
+  .text-gradient {
+    @apply bg-gradient-to-r from-nova-neon via-accent to-nova-glowPurple bg-clip-text text-transparent;
+    background-size: 200% 200%;
+  }
+  
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4;
+  }
+  
+  /* Mobile optimizations */
+  @media (max-width: 768px) {
+    .glass {
+      backdrop-filter: none;
+      @apply bg-dark-secondary/90;
+    }
+    
+    .modern-card {
+      backdrop-filter: none;
+      @apply bg-dark-secondary/95;
+    }
+  }
+}
+
+@layer utilities {
+  /* Simple shadows */
+  .shadow-glow {
+    box-shadow: 0 0 20px rgba(232, 145, 255, 0.3);
+  }
+  
+  .shadow-neon-lg {
+    box-shadow: 0 10px 40px rgba(232, 145, 255, 0.4);
+  }
+  
+  /* Text shadows */
+  .text-glow {
+    text-shadow: 0 0 20px rgba(232, 145, 255, 0.5);
+  }
+  
+  /* Background gradients */
+  .bg-nova-gradient {
+    background: linear-gradient(135deg, #E891FF 0%, #B45CF0 100%);
+  }
+  
+  .bg-mesh-gradient {
+    background-image: radial-gradient(at 40% 20%, rgba(180, 92, 240, 0.3) 0px, transparent 50%),
+                      radial-gradient(at 80% 0%, rgba(232, 145, 255, 0.2) 0px, transparent 50%),
+                      radial-gradient(at 0% 50%, rgba(180, 92, 240, 0.2) 0px, transparent 50%);
+  }
+  
+  .bg-gradient-radial {
+    background: radial-gradient(circle at center, var(--tw-gradient-stops));
+  }
+  
+  /* Performance utilities */
+  .contain-layout {
+    contain: layout;
+  }
+  
+  .contain-paint {
+    contain: paint;
+  }
+  
+  .contain-strict {
+    contain: strict;
+  }
+}
