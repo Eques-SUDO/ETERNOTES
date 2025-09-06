@@ -305,7 +305,7 @@ const Contact: React.FC = () => {
                   <div>
                     <label htmlFor="cni" className="block text-white font-medium mb-2">
                       <FaIdCard className="inline-block mr-2 text-nova-neon text-sm" />
-                      CNI (Student ID) *
+                      CNI *
                     </label>
                     <input
                       type="text"
