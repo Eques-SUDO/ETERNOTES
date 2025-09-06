@@ -4,6 +4,7 @@ import Layout from './components/layout/Layout';
 import MusicDecorations from './components/decorations/MusicDecorations';
 import OptimizedLightingEffects from './components/background/OptimizedLightingEffects';
 import { PerformanceProvider } from './contexts/PerformanceContext';
+import ScrollToTop from './components/common/ScrollToTop';
 
 // Lazy load pages for better performance
 const Home = lazy(() => import('./pages/Home'));
@@ -26,6 +27,7 @@ const App: React.FC = () => {
   return (
     <PerformanceProvider>
       <Router>
+      <ScrollToTop />
       
       {/* Minimal Background - Performance Optimized */}
       <div className="musical-staff-bg"></div>
