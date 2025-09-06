@@ -564,7 +564,7 @@ const Home: React.FC = () => {
             </div>
             
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold font-display mb-4 md:mb-6">
-              <span className="text-gradient-purple-pink">Gallery</span>
+              <span className="text-gradient-purple-pink">Campus Gallery</span>
             </h2>
             <p className="text-xl text-gray-text max-w-3xl mx-auto leading-relaxed">
               Moments from our musical journey - jam sessions, workshops, and campus performances
