@@ -306,23 +306,22 @@ const Home: React.FC = () => {
 
   return (
     <>
-      {/* Hero Section - Brighter Logo Colors */}
+      {/* Hero Section - Mobile Optimized */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 sm:pt-24 md:pt-0">
-        {/* Brighter base background with ETERNOTES colors */}
-        <div className="absolute inset-0 bg-gradient-to-br from-indigo-900 via-purple-800 to-blue-900" />
+        {/* Main dark background with subtle ETERNOTES colors */}
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-gray-900 to-black" />
         
-        {/* Enhanced ETERNOTES color layers */}
-        <div className="absolute inset-0 bg-gradient-to-tr from-nova-cyan/25 via-transparent to-nova-pink/20" />
-        <div className="absolute inset-0 bg-gradient-to-bl from-nova-purple/20 via-transparent to-nova-cyan/25" />
-        <div className="absolute inset-0 bg-gradient-to-t from-transparent via-nova-purple/15 to-transparent" />
+        {/* ETERNOTES color layers */}
+        <div className="absolute inset-0 bg-gradient-to-tr from-cyan-500/10 via-transparent to-pink-500/8" />
+        <div className="absolute inset-0 bg-gradient-to-bl from-purple-500/8 via-transparent to-cyan-500/8" />
+        <div className="absolute inset-0 bg-gradient-to-t from-transparent via-purple-500/5 to-transparent" />
         
-        {/* Brighter radial gradients */}
+        {/* Radial gradients for depth */}
         <div className="absolute inset-0" style={{
           background: `
-            radial-gradient(circle at 20% 30%, rgba(0, 212, 255, 0.3) 0%, transparent 50%),
-            radial-gradient(circle at 80% 20%, rgba(255, 69, 216, 0.25) 0%, transparent 50%),
-            radial-gradient(circle at 40% 80%, rgba(153, 69, 255, 0.2) 0%, transparent 50%),
-            radial-gradient(circle at 60% 10%, rgba(0, 212, 255, 0.15) 0%, transparent 60%)
+            radial-gradient(circle at 20% 30%, rgba(0, 212, 255, 0.15) 0%, transparent 40%),
+            radial-gradient(circle at 80% 20%, rgba(255, 69, 216, 0.12) 0%, transparent 40%),
+            radial-gradient(circle at 40% 80%, rgba(153, 69, 255, 0.10) 0%, transparent 40%)
           `
         }} />
         
@@ -476,10 +475,10 @@ const Home: React.FC = () => {
 
       </section>
 
-      {/* Features Section - Brighter */}
-      <section className="py-20 md:py-32 lg:py-40 relative overflow-hidden bg-gradient-to-b from-slate-800 via-indigo-900 to-slate-800">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-nova-purple/20 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-r from-nova-cyan/10 via-nova-purple/10 to-nova-pink/10" />
+      {/* Features Section - Modern */}
+      <section className="py-20 md:py-32 lg:py-40 relative overflow-hidden bg-gradient-to-b from-dark-surface via-dark-bg to-dark-surface">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-dark-bg/30 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-primary/3 via-secondary/3 to-accent/3" />
         
         {/* Infinity Symbols - Services Section */}
         <EternotesSymbols density="light" />
@@ -508,9 +507,9 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* About Us Section - Brighter */}
-      <section className="py-12 sm:py-16 md:py-24 lg:py-32 relative overflow-hidden bg-gradient-to-b from-purple-900 via-slate-800 to-indigo-900">
-        <div className="absolute inset-0 bg-gradient-to-br from-nova-purple/20 via-transparent to-nova-cyan/15" />
+      {/* About Us Section - Mobile Optimized */}
+      <section className="py-12 sm:py-16 md:py-24 lg:py-32 relative overflow-hidden bg-gradient-to-b from-dark-bg via-dark-secondary/30 to-dark-secondary/60">
+        <div className="absolute inset-0 bg-gradient-to-br from-nova-darkPurple/10 via-transparent to-primary/5" />
         
         {/* Infinity Symbols - About Section */}
         <EternotesSymbols density="minimal" />
@@ -549,9 +548,9 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* Gallery Section - Brighter */}
-      <section className="py-12 sm:py-16 md:py-24 lg:py-32 relative overflow-hidden bg-gradient-to-b from-indigo-800 via-purple-800 to-blue-800">
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-nova-pink/15 to-transparent" />
+      {/* Gallery Section - Mobile Optimized */}
+      <section className="py-12 sm:py-16 md:py-24 lg:py-32 relative overflow-hidden bg-gradient-to-b from-dark-secondary/60 via-dark-secondary/40 to-dark-secondary/80">
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-nova-darkPurple/5 to-transparent" />
         
         {/* Infinity Symbols - Gallery Section */}
         <EternotesSymbols density="light" />
@@ -599,9 +598,9 @@ const Home: React.FC = () => {
       </section>
 
 
-      {/* Staff Section - Brighter */}
-      <section className="py-12 sm:py-16 md:py-24 lg:py-32 relative overflow-hidden bg-gradient-to-b from-slate-800 via-purple-900 to-indigo-800">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-nova-cyan/15 to-nova-purple/20" />
+      {/* Staff Section - Mobile Optimized */}
+      <section className="py-12 sm:py-16 md:py-24 lg:py-32 relative overflow-hidden bg-gradient-to-b from-dark-secondary/80 to-dark-secondary">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-dark-bg/20 to-dark-secondary/50" />
         
         {/* Infinity Symbols - Team Section */}
         <EternotesSymbols density="minimal" />
