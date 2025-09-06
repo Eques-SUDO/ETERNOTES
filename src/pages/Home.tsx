@@ -198,7 +198,7 @@ const Home: React.FC = () => {
       name: "Achraf ElOuazzani",
       role: "President",
       major: "",
-      image: "/images/staff/achraf.jpg",
+      image: "/images/staff/Ashraf.jpeg",
       description: "Singer/Records, Masters Songs",
       colorScheme: {
         primary: "text-gradient-aurora",
@@ -212,7 +212,7 @@ const Home: React.FC = () => {
       name: "Manal Ahmina",
       role: "Vice President",
       major: "",
-      image: "/images/staff/Minnie.jpg",
+      image: "/images/staff/Minnie.jpeg",
       description: "Content Creator, Singer, Song Writer",
       artistName: "Minnie",
       colorScheme: {
@@ -227,7 +227,7 @@ const Home: React.FC = () => {
       name: "Hiba ELKhourani",
       role: "Human Resources",
       major: "",
-      image: "/images/staff/hiba.jpg",
+      image: "/images/staff/hiba2.jpg",
       description: "Singer",
       colorScheme: {
         primary: "text-gradient-cosmic",
@@ -241,7 +241,7 @@ const Home: React.FC = () => {
       name: "Salma Hajjaji",
       role: "VP of Administration",
       major: "",
-      image: "/images/staff/salma.jpg",
+      image: "/images/staff/Salma.jpeg",
       description: "Singer",
       colorScheme: {
         primary: "text-gradient-neon",
@@ -255,7 +255,7 @@ const Home: React.FC = () => {
       name: "Faris Moughamir",
       role: "Artistic Director",
       major: "",
-      image: "/images/staff/Faris.jpg",
+      image: "/images/staff/Faris.jpeg",
       description: "DJ and Producer",
       artistName: "Eques",
       colorScheme: {
@@ -270,7 +270,7 @@ const Home: React.FC = () => {
       name: "Nour Naim",
       role: "Artistic Director",
       major: "",
-      image: "/images/staff/Nour.JPG",
+      image: "/images/staff/Nour.jpeg",
       description: "Singer",
       colorScheme: {
         primary: "text-gradient-blue-cyan",
@@ -284,7 +284,7 @@ const Home: React.FC = () => {
       name: "Hamza Naim",
       role: "Vocal Coach/Music Theory Tutor",
       major: "",
-      image: "/images/staff/hamza.jpg",
+      image: "/images/staff/Hamza.jpeg",
       description: "Singer",
       colorScheme: {
         primary: "text-gradient-emerald-cyan",

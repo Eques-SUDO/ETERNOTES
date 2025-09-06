@@ -2,16 +2,38 @@ import React, { memo } from 'react';
 import { motion } from 'framer-motion';
 import { FaMusic } from 'react-icons/fa';
 import Button from '../common/Button';
+import SplitScreenSlideshow from '../common/SplitScreenSlideshow';
 
 interface HeroSectionProps {
   onJoinClick: () => void;
 }
 
 const HeroSection: React.FC<HeroSectionProps> = memo(({ onJoinClick }) => {
+  // Staff photos for slideshow
+  const staffPhotos = [
+    { src: '/images/staff/achraf.jpg', alt: 'Achraf - JAMHOUSE Staff' },
+    { src: '/images/staff/Faris.jpg', alt: 'Faris - JAMHOUSE Staff' },
+    { src: '/images/staff/hamza.jpg', alt: 'Hamza - JAMHOUSE Staff' },
+    { src: '/images/staff/hiba.jpg', alt: 'Hiba - JAMHOUSE Staff' },
+    { src: '/images/staff/Minnie.jpg', alt: 'Minnie - JAMHOUSE Staff' },
+    { src: '/images/staff/Nour.JPG', alt: 'Nour - JAMHOUSE Staff' },
+    { src: '/images/staff/salma.jpg', alt: 'Salma - JAMHOUSE Staff' },
+    { src: '/images/staff/Youffes.jpg', alt: 'Youffes - JAMHOUSE Staff' },
+  ];
+
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
-      {/* Optimized Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-dark-bg via-dark-secondary to-dark-bg" />
+      {/* Background Slideshow */}
+      <div className="absolute inset-0">
+        <SplitScreenSlideshow 
+          images={staffPhotos} 
+          interval={5000}
+          className="w-full h-full"
+        />
+      </div>
+      
+      {/* Gradient overlay for better text contrast */}
+      <div className="absolute inset-0 bg-gradient-to-br from-dark-bg/70 via-dark-secondary/60 to-dark-bg/80" />
       
       <div className="container-custom relative z-10 text-center">
         <motion.div
