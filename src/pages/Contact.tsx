@@ -48,10 +48,7 @@ const Contact: React.FC = () => {
         const age = parseInt(value);
         return !age || age < 16 || age > 65 ? 'Please enter a valid age (16-65)' : '';
       case 'cni':
-        if (!value) return ''; // Allow empty for optional validation
-        const cniRegex = /^[A-Za-z]{2}\d{4}$/;
-        const upperValue = value.toUpperCase().trim();
-        return !cniRegex.test(upperValue) ? 'CNI must be in format: AB1234 (2 letters + 4 digits)' : '';
+        return ''; // No validation - just required field
       case 'email':
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return !emailRegex.test(value) ? 'Please enter a valid email address' : '';
@@ -69,11 +66,9 @@ const Contact: React.FC = () => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     
-    // Special handling for CNI and phone fields
+    // Special handling for phone fields
     let processedValue = value;
-    if (name === 'cni') {
-      processedValue = value.toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 6);
-    } else if (name === 'phone') {
+    if (name === 'phone') {
       // Auto-format phone numbers
       processedValue = value.replace(/[^0-9+]/g, '');
       // Convert Moroccan format 06/07 to +2126/+2127
@@ -313,20 +308,10 @@ const Contact: React.FC = () => {
                       name="cni"
                       value={formData.cni}
                       onChange={handleChange}
-                      maxLength={6}
-                      className="w-full px-4 py-3 bg-dark-secondary/50 border border-primary/30 rounded-lg text-white placeholder-gray-text/50 focus:outline-none focus:border-nova-neon focus:ring-1 focus:ring-nova-neon transition-all duration-300 hover:border-primary/50 font-mono tracking-wider"
-                      placeholder="AB1234"
-                      style={{ textTransform: 'uppercase' }}
+                      className="w-full px-4 py-3 bg-dark-secondary/50 border border-primary/30 rounded-lg text-white placeholder-gray-text/50 focus:outline-none focus:border-nova-neon focus:ring-1 focus:ring-nova-neon transition-all duration-300 hover:border-primary/50"
+                      placeholder="Your CNI number"
                     />
                     {errors.cni && <p className="text-red-400 text-sm mt-1">{errors.cni}</p>}
-                    <p className="text-gray-text text-xs mt-1">
-                      Format: 2 letters + 4 digits (e.g., AB1234)
-                      {formData.cni && (
-                        <span className={`ml-2 ${formData.cni.length === 6 ? 'text-green-400' : 'text-yellow-400'}`}>
-                          ({formData.cni.length}/6)
-                        </span>
-                      )}
-                    </p>
                   </div>
                 </div>
               </div>
