@@ -47,6 +47,18 @@ const Events: React.FC = () => {
 
   const hardcodedEvents: Event[] = [
     {
+      id: 0,
+      title: "🎤 AUDITIONS THIS SATURDAY",
+      artist: "ETERNOTES Music Club",
+      date: new Date('2025-09-27'),
+      time: "1:00 PM - 5:00 PM",
+      price: 0,
+      category: "audition",
+      description: "Join ETERNOTES! Open auditions for singers, instrumentalists, producers, and performers. All skill levels welcome. Come show us your talent!",
+      location: "Faculty of Sciences, Rabat",
+      soldOut: false
+    },
+    {
       id: 1,
       title: "Weekly Jam Session",
       artist: "All Members Welcome",
@@ -127,6 +139,7 @@ const Events: React.FC = () => {
 
   const categories: Category[] = useMemo(() => [
     { value: 'all', label: 'All Activities' },
+    { value: 'audition', label: '🎤 Auditions' },
     { value: 'jam', label: 'Jam Sessions' },
     { value: 'workshop', label: 'Classes' },
     { value: 'rehearsal', label: 'Choir Practice' }

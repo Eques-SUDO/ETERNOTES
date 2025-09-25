@@ -58,7 +58,12 @@ const EventCard: React.FC<EventCardProps> = memo(({ event }) => {
       <div className="relative z-10 space-y-4 mb-6">
         <div className="flex items-center gap-4 text-gray-text group-hover:text-accent transition-colors duration-300 p-3 rounded-lg glass border border-primary/10">
           <FaCalendarAlt className="text-nova-neon text-lg flex-shrink-0" />
-          <span className="font-medium">TBA</span>
+          <span className="font-medium">
+            {event.date.getFullYear() === 2025 && event.date.getMonth() === 0 && event.date.getDate() === 1
+              ? 'TBA'
+              : format(event.date, 'EEEE, MMMM do, yyyy')
+            }
+          </span>
         </div>
         
         <div className="flex items-center gap-4 text-gray-text group-hover:text-accent transition-colors duration-300 p-3 rounded-lg glass border border-primary/10">
