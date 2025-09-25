@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { FaTimes, FaCalendarAlt, FaClock, FaMapMarkerAlt } from 'react-icons/fa';
 
 const AnnouncementPopup: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -22,9 +21,9 @@ const AnnouncementPopup: React.FC = () => {
       <div className="relative max-w-2xl w-full glass border-2 border-nova-neon/50 rounded-2xl p-8 shadow-2xl shadow-nova-neon/30 animate-slideUp">
         <button
           onClick={handleClose}
-          className="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors"
+          className="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors text-2xl"
         >
-          <FaTimes size={24} />
+          ×
         </button>
 
         <div className="text-center">
@@ -45,15 +44,15 @@ const AnnouncementPopup: React.FC = () => {
 
             <div className="flex flex-col gap-3 text-left max-w-md mx-auto">
               <div className="flex items-center gap-3">
-                <FaCalendarAlt className="text-nova-neon flex-shrink-0" />
+                <span className="text-nova-neon flex-shrink-0">📅</span>
                 <span>This Saturday, September 27th</span>
               </div>
               <div className="flex items-center gap-3">
-                <FaClock className="text-nova-neon flex-shrink-0" />
+                <span className="text-nova-neon flex-shrink-0">🕐</span>
                 <span>1:00 PM - 5:00 PM</span>
               </div>
               <div className="flex items-center gap-3">
-                <FaMapMarkerAlt className="text-nova-neon flex-shrink-0" />
+                <span className="text-nova-neon flex-shrink-0">📍</span>
                 <span>Faculty of Sciences, Rabat</span>
               </div>
             </div>
