@@ -264,34 +264,6 @@ const Home: React.FC = () => {
         glow: "shadow-[0_0_30px_rgba(168,85,247,0.6)]",
         gradient: "from-purple-500 to-pink-500"
       }
-    },
-    {
-      id: 6,
-      name: "Nour Naim",
-      role: "Artistic Director",
-      major: "",
-      image: "/images/staff/Nour.jpeg",
-      description: "Singer",
-      colorScheme: {
-        primary: "text-gradient-blue-cyan",
-        secondary: "text-blue-400",
-        glow: "shadow-[0_0_30px_rgba(59,130,246,0.6)]",
-        gradient: "from-blue-400 to-indigo-500"
-      }
-    },
-    {
-      id: 7,
-      name: "Hamza Naim",
-      role: "Vocal Coach/Music Theory Tutor",
-      major: "",
-      image: "/images/staff/Hamza.jpeg",
-      description: "Singer",
-      colorScheme: {
-        primary: "text-gradient-emerald-cyan",
-        secondary: "text-green-400",
-        glow: "shadow-[0_0_30px_rgba(16,185,129,0.6)]",
-        gradient: "from-emerald-400 to-teal-500"
-      }
     }
   ], []);
 
